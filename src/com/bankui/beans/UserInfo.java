@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserInfo {
 	private Long id;
-	private String username;
+	private String username;//this same casing is used in jsp files as path attribute 
 	private String password;
 	//roles created in backend
 	private List<Role> roles;

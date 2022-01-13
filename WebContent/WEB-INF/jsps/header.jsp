@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="">XYZ-Bank</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,18 +22,18 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home
+          <a class="nav-link active" href="${pageContext.request.contextPath }/">Home
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Deposit</a>
+          <a class="nav-link" href="${pageContext.request.contextPath }/deposit">Deposit</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Transfer</a>
+          <a class="nav-link" href="${pageContext.request.contextPath }/transfer">Transfer</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Statement</a>
+          <a class="nav-link" href="${pageContext.request.contextPath }/statement">Statement</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Settings</a>
@@ -42,12 +42,26 @@
             <a class="dropdown-item" href="#">Help</a>
           
           </div>
-        </li> 
+        </li>
       </ul>
-      <form class="d-flex">
+       
+       <%
+        String username = (String)session.getAttribute("username"); 
          
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Login</button>
-      </form>
+         if(username == null){
+        	%>
+        	<a class="btn btn-danger my-2 my-sm-0" href="${pageContext.request.contextPath }/login">Login</a>
+        	 
+        <% 	 
+        }else{
+        	%>
+        	<span style="font-family: monospace; color: white; font-weight: bold; font-size:x-large; ">Welcome <%=username %></span> 
+        	&nbsp;&nbsp;&nbsp; <a class="btn btn-warning my-2 my-sm-0" href="${pageContext.request.contextPath }/logout">Logout</a>
+        	<%
+        }
+       %>  
+        
+      
     </div>
   </div>
 </nav>
